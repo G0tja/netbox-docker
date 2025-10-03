@@ -1,0 +1,4 @@
+:443 {
+	reverse_proxy netbox:8080
+        tls /etc/ssl/private/server.crt /etc/ssl/private/server.key
+}
