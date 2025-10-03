@@ -1,0 +1,32 @@
+services:
+  netbox:
+    #image: netbox:latest-plugins
+    restart: always
+    pull_policy: never
+    build:
+      context: .
+      dockerfile: Dockerfile-Plugins
+    environment:
+      SKIP_SUPERUSER: "false"
+      SUPERUSER_NAME: "admin"
+      SUPERUSER_PASSWORD: "jA15kq2G4ARDufhK121Pg6msJfCcQNnMEMuqFxjv"
+  netbox-worker:
+    #image: netbox:latest-plugins
+    restart: always
+    pull_policy: never
+  netbox-housekeeping:
+    #image: netbox:latest-plugins
+    restart: always
+    pull_policy: never
+  caddy:
+    image: caddy:2-alpine
+    restart: always
+    depends_on:
+      - netbox
+    volumes:
+      - ./server.crt:/etc/ssl/private/server.crt:ro,z
+      - ./server.key:/etc/ssl/private/server.key:ro,z
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+    ports:
+      - 80:80
+      - 443:443
