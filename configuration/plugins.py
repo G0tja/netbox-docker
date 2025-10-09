@@ -15,8 +15,13 @@ PLUGINS = [
 ]
 
 PLUGINS_CONFIG = {
-   "netbox_topology_views": {
-     "allow_coordinates_saving": True
-   }
- }
+  "netbox_diode_plugin": {
+    "diode_target_override": "grpc://netbox.loe.internal:8080/diode",
+    "diode_username": "diode",
+    "netbox_to_diode_client_secret": "UlGY1qOj5Zcg9HbGisCHTzlufPdQ+ueK2oVnd3UuEJo="
+  },
+  "netbox_topology_views": {
+    "allow_coordinates_saving": True
+  }
+}
 

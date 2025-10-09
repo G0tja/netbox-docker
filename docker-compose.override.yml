@@ -7,9 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile-Plugins
     environment:
-      SKIP_SUPERUSER: "false"
-      SUPERUSER_NAME: "admin"
-      SUPERUSER_PASSWORD: "jA15kq2G4ARDufhK121Pg6msJfCcQNnMEMuqFxjv"
+      SKIP_SUPERUSER: "true"
   netbox-worker:
     #image: netbox:latest-plugins
     restart: always
