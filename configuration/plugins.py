@@ -9,8 +9,8 @@ PLUGINS = [
         "netbox_topology_views",
         "netbox_lifecycle",
         "netbox_reorder_rack",
-        "netbox_floorplan",
         "netbox_interface_synchronization",
+        "netbox_floorplan",
         "netbox_diode_plugin",
 ]
 
