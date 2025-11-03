@@ -8,6 +8,8 @@ services:
       dockerfile: Dockerfile-Plugins
     environment:
       SKIP_SUPERUSER: "true"
+    volumes:
+      - ./custom_pipeline.py:/etc/netbox/netbox/netbox/custom_pipeline.py:z,ro
   netbox-worker:
     #image: netbox:latest-plugins
     restart: always
