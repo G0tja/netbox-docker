@@ -116,6 +116,11 @@ REDIS = {
 # https://docs.djangoproject.com/en/stable/ref/settings/#std:setting-SECRET_KEY
 SECRET_KEY = _read_secret('secret_key', environ.get('SECRET_KEY', ''))
 
+API_TOKEN_PEPPERS = {}
+if api_token_pepper := _read_secret('api_token_pepper_1', environ.get('API_TOKEN_PEPPER_1', '')):
+    API_TOKEN_PEPPERS.update({1: api_token_pepper})
+
+
 
 #########################
 #                       #
@@ -305,6 +310,12 @@ REMOTE_AUTH_SUPERUSER_GROUPS = _environ_get_and_map('REMOTE_AUTH_SUPERUSER_GROUP
 REMOTE_AUTH_SUPERUSERS = _environ_get_and_map('REMOTE_AUTH_SUPERUSERS', '', _AS_LIST)
 REMOTE_AUTH_STAFF_GROUPS = _environ_get_and_map('REMOTE_AUTH_STAFF_GROUPS', '', _AS_LIST)
 REMOTE_AUTH_STAFF_USERS = _environ_get_and_map('REMOTE_AUTH_STAFF_USERS', '', _AS_LIST)
+# SSO Configuration
+SOCIAL_AUTH_OKTA_OPENIDCONNECT_KEY = environ.get('SOCIAL_AUTH_OKTA_OPENIDCONNECT_KEY')
+SOCIAL_AUTH_OKTA_OPENIDCONNECT_SECRET = _read_secret('okta_openidconnect_secret', environ.get('SOCIAL_AUTH_OKTA_OPENIDCONNECT_SECRET', ''))
+SOCIAL_AUTH_OKTA_OPENIDCONNECT_API_URL = environ.get('SOCIAL_AUTH_OKTA_OPENIDCONNECT_API_URL')
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = environ.get('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = _read_secret('google_oauth2_secret', environ.get('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET', ''))
 
 # This repository is used to check whether there is a new release of NetBox available. Set to None to disable the
 # version check or use the URL below to check for release in the official NetBox repository.
